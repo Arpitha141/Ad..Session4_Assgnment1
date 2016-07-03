@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Inheritance </title>
+</head>
+<body>
+
+<h1> Inheritace Example </h1>
+<h2 Style= "color: red">  used a document.write() to print the values but it is not working. Please help me to resolve this issue. </h2>
+
+
+
+<h3> Please enter the values and press Submit button to see the result. </h3>
+
+<h4> enter F12 to view the result </h4>
+
+
+<p>Please enter the details of the vehicle.</p>
+<form>
+	Name: <input type="text" name="name" id="name"><br><br>
+	Description: <input type=" text" name="desc"><br><br>
+	Vahicle Type: Two Wheeler <input type="radio" name="Type" id="Two" value="Two"> 
+	Four Wheeler <input type="radio"  name="Type" id="Four" value="Four"><br><br>
+	Cost Per Km: <input type="text" name="cost"><br><br>
+
+<button onclick="Display()">Submit</button>
+
+
+
+</form>
+
+<script type="text/javascript">
+		function Display(){
+				alert("inside Display");
+			
+
+				console.log("inside Display");
+
+				console.log(document.getElementById("name").value);
+
+				var type1= document.getElementById("Two").checked;
+				var type2 = document.getElementById("Four").checked;
+
+				if(type1){
+					alert("Two Wheeler");
+					document.write("Two Wheeler details");
+					var tw= new TwoWheeler();
+					tw.name = "Scooty";
+					tw.description = "the Scooty gives a milage of 60km/h";
+					tw.vehicle_type = "Two Wheeler";
+					tw.cost_per_km =" Rs 200";
+					
+					tw.printdetails();
+				}
+
+				if(type2)
+				{
+					alert("Four Wheeler");
+					document.write("Four Wheeler Details");
+					var fw= new FourWheeler();
+					fw.name = "Car";
+					fw.description ="Car gives a milegae of 150km/h";
+					fw.vehicle_type ="Four Wheeler";
+					fw.cost_per_km ="Rs 100";
+					fw.fuel_type = "CNG";
+				//	document.write("<br> Fuel Type " + fw.fuel_type);
+					fw.printdetails();
+				}
+
+
+				console.log("Two Wheeler:"+type1);
+				console.log("Four Wheeler:"+type2);
+		}
+
+function Vehicle(){
+		var name;
+		var description;
+		var vehicle_type;
+		var cost_per_km;
+
+	}
+
+	Vehicle.prototype.printdetails = function(){
+		document.write("<br> Owner Name: " +this.name + "<br> Description of the Vehicle: " + this.description + "<br> Vehicle Type : " + this.vehicle_type + "<br> Cost per KM: Rs " + this.cost_per_km); 
+		console.log("Name:" +this.name);
+		console.log("Description:" +this.description)
+	}
+
+	function TwoWheeler(){
+
+	}
+
+	function FourWheeler(){
+
+	}
+
+	TwoWheeler.prototype = new Vehicle();
+
+	FourWheeler.prototype = new Vehicle();
+
+	FourWheeler.prototype.fuel_type= ''; 
+
+</script>
+
+</body>
+</html>
